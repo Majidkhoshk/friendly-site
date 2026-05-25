@@ -25,8 +25,9 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center">
-              <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+            <Link to="/" className="flex items-center gap-2">
+              <span className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-bold">ب</span>
+              <span className="text-xl font-bold text-primary">
                 بسوی سامیار سفر
               </span>
             </Link>
@@ -47,7 +48,7 @@ const Header = () => {
 
           {/* CTA Button (Desktop) */}
           <div className="hidden md:flex">
-            <Button size="sm">تماس با ما</Button>
+            <Button size="sm" className="btn-gold rounded-full px-5">تماس با ما</Button>
           </div>
 
           {/* Mobile menu button */}

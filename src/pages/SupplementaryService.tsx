@@ -1,49 +1,52 @@
-
 import React from 'react';
-import { Package, ShoppingBag } from 'lucide-react';
+import { Layers, FileCheck } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const SupplementaryService = () => {
   return (
-    <div className="min-h-screen">
-      <div className="container mx-auto px-4 py-16">
-        <div className="flex items-center gap-4 mb-8">
-          <Package className="h-8 w-8 text-primary" />
-          <h1>Supplementary Services</h1>
-        </div>
-        
-        <div className="grid md:grid-cols-2 gap-8">
-          <div>
-            <h2 className="text-2xl font-semibold mb-4">Travel Extras & Add-ons</h2>
-            <p className="text-muted-foreground mb-6">
-              Enhance your travel experience with our comprehensive supplementary services. From airport 
-              transfers to travel insurance, we've got all your additional needs covered.
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-grow">
+        <section className="bg-gradient-to-l from-primary to-[hsl(184_60%_28%)] text-primary-foreground py-20">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center gap-4 mb-4 justify-end">
+              <h1>خدمات تکمیلی</h1>
+              <Layers className="h-10 w-10 text-accent" />
+            </div>
+            <p className="text-primary-foreground/80 text-lg text-right max-w-2xl mr-auto">
+              ویزا، بیمه مسافرتی، ترانسفر فرودگاهی و سایر خدمات جانبی سفر
             </p>
-            <Button className="gap-2">
-              <ShoppingBag className="h-4 w-4" />
-              View Services
-            </Button>
           </div>
-          
-          <div className="bg-muted rounded-lg p-6">
-            <h3 className="text-xl font-semibold mb-4">We Provide:</h3>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2">
-                ✓ Airport Transfers
-              </li>
-              <li className="flex items-center gap-2">
-                ✓ Travel Insurance
-              </li>
-              <li className="flex items-center gap-2">
-                ✓ Car Rentals
-              </li>
-              <li className="flex items-center gap-2">
-                ✓ Tour Packages
-              </li>
-            </ul>
+        </section>
+
+        <section className="container mx-auto px-4 py-16">
+          <div className="grid md:grid-cols-2 gap-10">
+            <div>
+              <h2 className="text-2xl font-bold mb-4">همراه شما در تمام مراحل سفر</h2>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                ما تمام نیازهای جانبی سفر شما را از اخذ ویزا تا بیمه و ترانسفر مدیریت می‌کنیم.
+              </p>
+              <Button className="btn-gold gap-2 rounded-full">
+                <FileCheck className="h-4 w-4" />
+                مشاهده خدمات
+              </Button>
+            </div>
+
+            <div className="bg-muted rounded-2xl p-8">
+              <h3 className="text-xl font-bold mb-4">خدمات تکمیلی شامل:</h3>
+              <ul className="space-y-3 text-foreground/80">
+                <li>✓ اخذ ویزای کشورهای مختلف</li>
+                <li>✓ بیمه مسافرتی بین‌المللی</li>
+                <li>✓ ترانسفر فرودگاهی</li>
+                <li>✓ رزرو بلیط و تورهای اختصاصی</li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
+      <Footer />
     </div>
   );
 };
