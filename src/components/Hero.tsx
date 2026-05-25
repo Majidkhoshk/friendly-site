@@ -1,59 +1,71 @@
-
 import React from 'react';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Award, Layers, Compass, Building2 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { Link } from 'react-router-dom';
+
+const stats = [
+  { icon: Building2, label: 'هتل‌ها', path: '/services/hotel' },
+  { icon: Compass, label: 'رویدادها', path: '/services/events' },
+  { icon: Layers, label: 'خدمات تکمیلی', path: '/services/supplementary' },
+  { icon: Award, label: 'وی‌آی‌پی بین‌الملل', path: '/services/vip' },
+];
 
 const Hero = () => {
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center">
-          {/* Content */}
-          <div className="w-full lg:w-1/2 text-center lg:text-right mb-12 lg:mb-0 animate-fade-in">
-            <h1 className="mb-6">
-              سفرهای <span className="text-gradient">فوق‌العاده</span> را کشف کنید
-            </h1>
-            <p className="text-lg md:text-xl text-foreground/70 mb-8 max-w-2xl mx-auto lg:mx-0">
-              تجربه سفرهای شخصی‌سازی شده که ماجراجویی‌های شما را دگرگون می‌کنند. بسوی سامیار سفر 
-              سفرهای فراموش‌نشدنی را متناسب با رویاهای شما می‌سازد.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button size="lg" className="gap-2">
-                سفر خود را برنامه‌ریزی کنید <ArrowLeft size={16} />
-              </Button>
-              <Button size="lg" variant="outline">
-                خدمات ما
-              </Button>
-            </div>
+    <section
+      className="relative overflow-hidden"
+      style={{
+        backgroundImage:
+          "linear-gradient(135deg, hsl(188 70% 18% / 0.88), hsl(184 60% 28% / 0.78)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32 md:pt-28 md:pb-40 relative z-10">
+        <div className="max-w-3xl mr-auto text-right text-primary-foreground animate-fade-in">
+          <div className="inline-flex items-center gap-2 mb-6 text-sm text-accent">
+            <span className="h-px w-8 bg-accent" />
+            به بسوی سامیار سفر خوش آمدید
           </div>
-          
-          {/* Hero Image */}
-          <div className="w-full lg:w-1/2">
-            <div className="relative mx-auto lg:mr-auto h-[400px] max-w-md lg:max-w-full animate-fade-in">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl transform rotate-3"></div>
-              <div className="absolute inset-0 bg-card shadow-xl rounded-3xl transform -rotate-3 overflow-hidden border">
-                <div className="p-6 h-full flex flex-col">
-                  <div className="flex items-center mb-4">
-                    <div className="w-3 h-3 rounded-full bg-destructive mr-2"></div>
-                    <div className="w-3 h-3 rounded-full bg-amber-400 mr-2"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                    <div className="mr-4 h-6 w-48 bg-muted rounded"></div>
-                  </div>
-                  <div className="flex-grow grid grid-cols-3 gap-4">
-                    <div className="col-span-2 h-full bg-muted rounded-lg"></div>
-                    <div className="col-span-1 flex flex-col gap-4">
-                      <div className="h-1/3 bg-muted rounded-lg"></div>
-                      <div className="h-1/3 bg-muted rounded-lg"></div>
-                      <div className="h-1/3 bg-muted rounded-lg"></div>
-                    </div>
-                  </div>
+
+          <h1 className="mb-4 leading-tight">
+            بســـوی <span className="text-gradient">سامیار سفر</span>
+          </h1>
+          <h2 className="text-xl md:text-2xl font-medium text-primary-foreground/90 mb-8 leading-relaxed">
+            ارائه‌دهنده‌ی خدمات تخصصی گردشگری، هتل، رویداد و سفرهای وی‌آی‌پی بین‌المللی
+          </h2>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-start">
+            <Button size="lg" className="btn-gold gap-2 rounded-full px-8">
+              همکاری با ما <ArrowLeft size={18} />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="rounded-full px-8 bg-transparent border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+            >
+              تماس با شرکت
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Stats / quick links */}
+      <div className="relative z-10 border-t border-primary-foreground/15 bg-gradient-to-l from-transparent via-primary/20 to-transparent">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {stats.map(({ icon: Icon, label, path }) => (
+              <Link
+                key={path}
+                to={path}
+                className="group flex flex-col items-center text-center text-primary-foreground/90 hover:text-accent transition-colors"
+              >
+                <div className="w-14 h-14 rounded-full border border-primary-foreground/30 flex items-center justify-center mb-3 group-hover:border-accent group-hover:scale-110 transition-all">
+                  <Icon className="w-6 h-6" />
                 </div>
-              </div>
-            </div>
+                <span className="text-sm font-medium">{label}</span>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
