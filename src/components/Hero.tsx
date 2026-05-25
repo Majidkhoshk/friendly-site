@@ -1,13 +1,14 @@
 import React from 'react';
-import { ArrowLeft, Award, Layers, Compass, Building2 } from 'lucide-react';
+import { ArrowLeft, Award, Layers, Compass, Briefcase, Eye } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 
-const stats = [
-  { icon: Building2, label: 'هتل‌ها', path: '/services/hotel' },
-  { icon: Compass, label: 'رویدادها', path: '/services/events' },
-  { icon: Layers, label: 'خدمات تکمیلی', path: '/services/supplementary' },
-  { icon: Award, label: 'وی‌آی‌پی بین‌الملل', path: '/services/vip' },
+const quickLinks = [
+  { icon: Briefcase, label: 'پروژه‌ها', path: '/projects' },
+  { icon: Compass, label: 'استراتژی کلان', path: '/#strategy' },
+  { icon: Layers, label: 'افزایش سرمایه', path: '/#capital' },
+  { icon: Eye, label: 'دستاوردها', path: '/#achievements' },
+  { icon: Award, label: 'درباره سمگا', path: '/about' },
 ];
 
 const Hero = () => {
@@ -16,45 +17,53 @@ const Hero = () => {
       className="relative overflow-hidden"
       style={{
         backgroundImage:
-          "linear-gradient(135deg, hsl(188 70% 18% / 0.88), hsl(184 60% 28% / 0.78)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80')",
+          "linear-gradient(135deg, hsl(190 70% 15% / 0.92), hsl(184 60% 25% / 0.82)), url('https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1920&q=80')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32 md:pt-28 md:pb-40 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32 md:pt-32 md:pb-40 relative z-10">
         <div className="max-w-3xl mr-auto text-right text-primary-foreground animate-fade-in">
           <div className="inline-flex items-center gap-2 mb-6 text-sm text-accent">
             <span className="h-px w-8 bg-accent" />
-            به بسوی سامیار سفر خوش آمدید
+            به سمگا خوش آمدید
           </div>
 
-          <h1 className="mb-4 leading-tight">
-            بســـوی <span className="text-gradient">سامیار سفر</span>
+          <h1 className="mb-6 leading-tight">
+            ســـمـــــگــــــــــــــــــــــا
+            <br />
+            <span className="text-gradient">نخستین هلدینگ تخصصی</span>
+            <br />
+            عضو سازمان جهانی گردشگری
           </h1>
-          <h2 className="text-xl md:text-2xl font-medium text-primary-foreground/90 mb-8 leading-relaxed">
-            ارائه‌دهنده‌ی خدمات تخصصی گردشگری، هتل، رویداد و سفرهای وی‌آی‌پی بین‌المللی
-          </h2>
+
+          <p className="text-lg md:text-xl text-primary-foreground/85 mb-8 max-w-2xl leading-relaxed">
+            بیش از یک دهه تجربه در سرمایه‌گذاری هدفمند در حوزه‌های مالی، بانکی، هتلداری و گردشگری، با سرمایه‌ی ثبتی ۲۵٬۰۰۰ میلیارد ریال در فرابورس ایران.
+          </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-start">
-            <Button size="lg" className="btn-gold gap-2 rounded-full px-8">
-              همکاری با ما <ArrowLeft size={18} />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="rounded-full px-8 bg-transparent border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground hover:text-primary"
-            >
-              تماس با شرکت
-            </Button>
+            <Link to="/contact">
+              <Button size="lg" className="btn-gold gap-2 rounded-full px-8 w-full sm:w-auto">
+                همکاری با ما <ArrowLeft size={18} />
+              </Button>
+            </Link>
+            <Link to="/about">
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-full px-8 bg-transparent border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground hover:text-primary w-full sm:w-auto"
+              >
+                درباره سمگا
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* Stats / quick links */}
-      <div className="relative z-10 border-t border-primary-foreground/15 bg-gradient-to-l from-transparent via-primary/20 to-transparent">
+      <div className="relative z-10 border-t border-primary-foreground/15 backdrop-blur-sm bg-primary/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map(({ icon: Icon, label, path }) => (
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+            {quickLinks.map(({ icon: Icon, label, path }) => (
               <Link
                 key={path}
                 to={path}

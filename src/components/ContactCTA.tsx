@@ -1,40 +1,39 @@
-
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { Phone, ArrowLeft } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Link } from 'react-router-dom';
 
 const ContactCTA = () => {
   return (
-    <section id="contact" className="py-20">
+    <section id="contact-cta" className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl hero-gradient p-8 md:p-12 lg:p-16">
-          {/* Decorative elements */}
-          <div className="absolute top-0 left-0 w-full h-full opacity-10">
-            <div className="absolute top-0 right-0 w-80 h-80 bg-white rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-white rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
-          </div>
-          
-          <div className="relative z-10 text-center max-w-3xl mx-auto">
-            <h2 className="text-white mb-6">Ready to Get Started?</h2>
-            <p className="text-white/80 text-lg mb-8">
-              Join thousands of satisfied customers who have transformed their digital presence with our solutions
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <Input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus-visible:ring-white/30"
-              />
-              <Button variant="secondary" className="shrink-0 gap-2">
-                Get Started <ArrowRight size={16} />
-              </Button>
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-l from-primary to-[hsl(184_70%_42%)] p-10 md:p-14 text-primary-foreground shadow-xl">
+          <div className="absolute -top-16 -left-16 w-72 h-72 rounded-full bg-accent/20 blur-3xl" aria-hidden="true" />
+          <div className="relative grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <div className="text-sm text-accent mb-3">تماس</div>
+              <h2 className="mb-4">می‌خواهید مستقیم با ما در تماس باشید؟</h2>
+              <p className="text-primary-foreground/85 leading-loose">
+                تیم سمگا آماده‌ی پاسخگویی به سوالات، پیشنهادها و درخواست‌های همکاری شما است.
+              </p>
             </div>
-            
-            <p className="mt-4 text-sm text-white/60">
-              No credit card required. Start your free 14-day trial today.
-            </p>
+            <div className="flex flex-col sm:flex-row gap-4 md:justify-end">
+              <a href="tel:+982188729566">
+                <Button size="lg" className="btn-gold rounded-full gap-2 w-full sm:w-auto">
+                  <Phone size={16} />
+                  ۰۲۱-۸۸۷۲۹۵۶۶
+                </Button>
+              </a>
+              <Link to="/contact">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full bg-transparent border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground hover:text-primary gap-2 w-full sm:w-auto"
+                >
+                  فرم تماس <ArrowLeft size={16} />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

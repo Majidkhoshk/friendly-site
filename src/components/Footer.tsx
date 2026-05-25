@@ -1,85 +1,63 @@
-
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, Github } from 'lucide-react';
+import { Phone, Mail, MapPin, Instagram, Send } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-  
+  const year = new Date().getFullYear();
   return (
-    <footer className="bg-muted/30 border-t">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company Info */}
+    <footer className="bg-[hsl(190_45%_10%)] text-primary-foreground/85 mt-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-1">
-            <div className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-              بسوی سامیار سفر
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-[hsl(184_70%_42%)] flex items-center justify-center text-primary-foreground font-extrabold">س</span>
+              <span className="text-xl font-bold text-primary-foreground">سمگا</span>
             </div>
-            <p className="text-foreground/70 mb-4">
-              تجربه سفرهای فراموش‌نشدنی که الهام‌بخش و لذت‌بخش هستند.
+            <p className="text-sm leading-relaxed text-primary-foreground/70">
+              نخستین هلدینگ تخصصی عضو سازمان جهانی گردشگری در ایران؛ فعال در حوزه‌های مالی، بانکی، گردشگری و میراث فرهنگی.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-foreground/60 hover:text-primary transition-colors">
-                <Facebook size={20} />
-                <span className="sr-only">فیسبوک</span>
+            <div className="flex gap-3 mt-5">
+              <a href="#" aria-label="اینستاگرام" className="w-9 h-9 rounded-full border border-primary-foreground/20 flex items-center justify-center hover:bg-accent hover:text-accent-foreground hover:border-accent transition-colors">
+                <Instagram size={16} />
               </a>
-              <a href="#" className="text-foreground/60 hover:text-primary transition-colors">
-                <Twitter size={20} />
-                <span className="sr-only">توییتر</span>
-              </a>
-              <a href="#" className="text-foreground/60 hover:text-primary transition-colors">
-                <Instagram size={20} />
-                <span className="sr-only">اینستاگرام</span>
-              </a>
-              <a href="#" className="text-foreground/60 hover:text-primary transition-colors">
-                <Linkedin size={20} />
-                <span className="sr-only">لینکدین</span>
-              </a>
-              <a href="#" className="text-foreground/60 hover:text-primary transition-colors">
-                <Github size={20} />
-                <span className="sr-only">گیت‌هاب</span>
+              <a href="#" aria-label="تلگرام" className="w-9 h-9 rounded-full border border-primary-foreground/20 flex items-center justify-center hover:bg-accent hover:text-accent-foreground hover:border-accent transition-colors">
+                <Send size={16} />
               </a>
             </div>
           </div>
-          
-          {/* Links */}
+
           <div>
-            <h4 className="text-base font-semibold mb-4">شرکت</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-foreground/70 hover:text-primary transition-colors">درباره ما</a></li>
-              <li><a href="#" className="text-foreground/70 hover:text-primary transition-colors">مشاغل</a></li>
-              <li><a href="#" className="text-foreground/70 hover:text-primary transition-colors">وبلاگ</a></li>
-              <li><a href="#" className="text-foreground/70 hover:text-primary transition-colors">مطبوعات</a></li>
+            <h4 className="text-base font-semibold mb-4 text-accent">دسترسی سریع</h4>
+            <ul className="space-y-2 text-sm">
+              <li><Link to="/about" className="hover:text-accent">درباره سمگا</Link></li>
+              <li><Link to="/projects" className="hover:text-accent">پروژه‌ها</Link></li>
+              <li><Link to="/news" className="hover:text-accent">اخبار</Link></li>
+              <li><Link to="/contact" className="hover:text-accent">تماس با ما</Link></li>
             </ul>
           </div>
-          
+
           <div>
-            <h4 className="text-base font-semibold mb-4">منابع</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-foreground/70 hover:text-primary transition-colors">مستندات</a></li>
-              <li><a href="#" className="text-foreground/70 hover:text-primary transition-colors">مرکز راهنمایی</a></li>
-              <li><a href="#" className="text-foreground/70 hover:text-primary transition-colors">آموزش‌ها</a></li>
-              <li><a href="#" className="text-foreground/70 hover:text-primary transition-colors">جامعه</a></li>
+            <h4 className="text-base font-semibold mb-4 text-accent">حوزه‌های فعالیت</h4>
+            <ul className="space-y-2 text-sm text-primary-foreground/70">
+              <li>پولی و بانکی</li>
+              <li>مالی و سرمایه‌گذاری</li>
+              <li>گردشگری و هتلداری</li>
+              <li>میراث فرهنگی</li>
             </ul>
           </div>
-          
+
           <div>
-            <h4 className="text-base font-semibold mb-4">قانونی</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-foreground/70 hover:text-primary transition-colors">سیاست حریم خصوصی</a></li>
-              <li><a href="#" className="text-foreground/70 hover:text-primary transition-colors">شرایط خدمات</a></li>
-              <li><a href="#" className="text-foreground/70 hover:text-primary transition-colors">سیاست کوکی</a></li>
-              <li><a href="#" className="text-foreground/70 hover:text-primary transition-colors">GDPR</a></li>
+            <h4 className="text-base font-semibold mb-4 text-accent">تماس</h4>
+            <ul className="space-y-3 text-sm text-primary-foreground/70">
+              <li className="flex items-center gap-2"><Phone size={14} className="text-accent" /> ۰۲۱-۸۸۷۲۹۵۶۶</li>
+              <li className="flex items-center gap-2"><Mail size={14} className="text-accent" /> info@semega.ir</li>
+              <li className="flex items-start gap-2"><MapPin size={14} className="text-accent mt-1" /> تهران، ایران</li>
             </ul>
           </div>
         </div>
-        
-        <div className="border-t mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-foreground/60 text-sm">
-            &copy; {currentYear} بسوی سامیار سفر. تمامی حقوق محفوظ است.
-          </p>
-          <p className="text-foreground/60 text-sm mt-4 md:mt-0">
-            با عشق طراحی شده برای تجربه‌های سفر استثنایی ❤️
-          </p>
+
+        <div className="border-t border-primary-foreground/10 mt-12 pt-6 text-center text-xs text-primary-foreground/50">
+          © {year} گروه سرمایه‌گذاری میراث فرهنگی و گردشگری ایران ـ سمگا. تمامی حقوق محفوظ است.
         </div>
       </div>
     </footer>

@@ -1,91 +1,84 @@
-
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
+const navItems = [
+  { name: 'صفحه اصلی', path: '/' },
+  { name: 'درباره سمگا', path: '/about' },
+  { name: 'دستاوردها', path: '/#achievements' },
+  { name: 'استراتژی', path: '/#strategy' },
+  { name: 'پروژه‌ها', path: '/projects' },
+  { name: 'اخبار', path: '/news' },
+  { name: 'تماس', path: '/contact' },
+];
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const navItems = [
-    { name: 'هتل‌ها', path: '/services/hotel' },
-    { name: 'رویدادها', path: '/services/events' },
-    { name: 'خدمات تکمیلی', path: '/services/supplementary' },
-    { name: 'وی‌آی‌پی بین‌الملل', path: '/services/vip' },
-  ];
+  const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
 
   return (
-    <header className="sticky top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b">
+    <header className="sticky top-0 w-full bg-background/85 backdrop-blur-md z-50 border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center gap-2">
-              <span className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-bold">ب</span>
-              <span className="text-xl font-bold text-primary">
-                بسوی سامیار سفر
-              </span>
-            </Link>
-          </div>
+          <Link to="/" className="flex items-center gap-2">
+            <span className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-[hsl(184_70%_42%)] flex items-center justify-center text-primary-foreground font-extrabold text-lg shadow-md">س</span>
+            <span className="text-lg font-bold text-primary">سمگا</span>
+          </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-reverse space-x-8">
+          <nav className="hidden lg:flex items-center gap-7">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className="text-foreground/80 hover:text-primary transition-colors"
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-primary",
+                  pathname === item.path ? "text-primary" : "text-foreground/75"
+                )}
               >
                 {item.name}
               </Link>
             ))}
           </nav>
 
-          {/* CTA Button (Desktop) */}
-          <div className="hidden md:flex">
-            <Button size="sm" className="btn-gold rounded-full px-5">تماس با ما</Button>
+          <div className="hidden lg:flex">
+            <Link to="/contact">
+              <Button size="sm" className="btn-gold rounded-full px-5">همکاری با ما</Button>
+            </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-foreground"
-              onClick={toggleMenu}
-              aria-expanded={isMenuOpen}
-            >
-              <span className="sr-only">باز کردن منو</span>
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          <button
+            type="button"
+            className="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-foreground"
+            onClick={() => setOpen(!open)}
+            aria-label="باز کردن منو"
+            aria-expanded={open}
+          >
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
       <div className={cn(
-        "md:hidden fixed inset-0 bg-background z-40 transform transition-transform duration-300 ease-in-out pt-16",
-        isMenuOpen ? "translate-x-0" : "-translate-x-full"
+        "lg:hidden fixed inset-0 bg-background z-40 transform transition-transform duration-300 ease-in-out pt-16",
+        open ? "translate-x-0" : "translate-x-full"
       )}>
-        <div className="flex flex-col space-y-4 px-4 pt-6 pb-6">
+        <nav className="flex flex-col gap-2 px-4 pt-6">
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
-              className="py-2 text-foreground/80 hover:text-primary transition-colors text-right"
-              onClick={() => setIsMenuOpen(false)}
+              className="py-3 border-b border-border text-foreground/80 hover:text-primary"
+              onClick={() => setOpen(false)}
             >
               {item.name}
             </Link>
           ))}
-          <Button className="mt-4 w-full" onClick={() => setIsMenuOpen(false)}>
-            تماس با ما
-          </Button>
-        </div>
+          <Link to="/contact" onClick={() => setOpen(false)}>
+            <Button className="mt-4 w-full btn-gold rounded-full">همکاری با ما</Button>
+          </Link>
+        </nav>
       </div>
     </header>
   );
